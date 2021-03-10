@@ -19,7 +19,7 @@ public:
     }
 };
 
-int main() {
+int doTwoSum() {
     std::cout << "Hello, World!" << std::endl;
     vector<int> vals = {2,3,4,5,7};
     int target = 9;
@@ -31,4 +31,29 @@ int main() {
     }
 
     return 0;
+}
+
+
+class Fib {
+public:
+    int fib(int n) {
+
+        int a = 0;
+        int b = 1;
+        if (n == 0)
+            return a;
+
+        for (int i = 1; i < n; ++i)
+        {
+            int tmp = b;
+            b += a;
+            a = tmp;
+        }
+        return b;
+    }
+};
+
+int main() {
+    Fib f;
+    cout << f.fib(3);
 }
