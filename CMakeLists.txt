@@ -3,4 +3,4 @@ project(leetcode_cpp)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(leetcode_cpp main.cpp)
+add_executable(leetcode_cpp main.cpp TwoSum.h TestSolutions.cpp TestSolutions.h Fib.h)
