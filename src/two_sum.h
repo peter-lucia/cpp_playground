@@ -2,8 +2,8 @@
 // Created by Peter Lucia on 1/24/22.
 //
 
-#ifndef LEETCODE_CPP_TWOSUM_H
-#define LEETCODE_CPP_TWOSUM_H
+#ifndef LEETCODE_CPP_TWO_SUM_H
+#define LEETCODE_CPP_TWO_SUM_H
 
 #include <vector>
 #include <unordered_map>
@@ -25,4 +25,4 @@ public:
     }
 };
 
-#endif //LEETCODE_CPP_TWOSUM_H
+#endif //LEETCODE_CPP_TWO_SUM_H

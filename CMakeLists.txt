@@ -1,6 +1,18 @@
 cmake_minimum_required(VERSION 3.17)
-project(leetcode_cpp)
+project(myproject)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(leetcode_cpp main.cpp TwoSum.h TestSolutions.cpp TestSolutions.h Fib.h)
+include(FetchContent)
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
+)
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_subdirectory(src)
+add_subdirectory(tests)
+
+add_executable(main main.cpp)

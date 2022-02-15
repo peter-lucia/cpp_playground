@@ -3,7 +3,7 @@
 #include <vector>
 #include <queue>
 #include <unordered_set>
-#include "TwoSum.h"
+#include "two_sum.h"
 
 using namespace std;
 
