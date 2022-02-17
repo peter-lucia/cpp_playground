@@ -2,13 +2,46 @@
 // Created by Peter Lucia on 1/24/22.
 //
 
-#ifndef LEETCODE_CPP_TWO_SUM_H
-#define LEETCODE_CPP_TWO_SUM_H
+#ifndef TWO_SUM_H
+#define TWO_SUM_H
 
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
+#include <iostream>
+
 using std::vector;
 using std::unordered_map;
+using std::unordered_set;
+using std::cout;
+
+namespace utils {
+
+
+    void printVector(const vector<int> &v) {
+
+        cout << "result: ";
+        for (int val : v) {
+            cout << val << ",";
+        }
+        cout << "\n";
+    }
+
+    void addVectorToSet(const vector<int> &v, unordered_set<int> &s) {
+        for (const int &val : v) {
+            s.insert(val);
+        }
+    }
+
+    unordered_set<int> getSetFromVector(const vector<int> &v) {
+        unordered_set<int> result;
+        for (const int &val : v) {
+            result.insert(val);
+        }
+        return result;
+    }
+
+}
 
 class TwoSum {
 public:
@@ -25,4 +58,4 @@ public:
     }
 };
 
-#endif //LEETCODE_CPP_TWO_SUM_H
+#endif //TWO_SUM_H

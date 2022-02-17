@@ -1,15 +1,10 @@
 cmake_minimum_required(VERSION 3.17)
 project(myproject)
 
+set(PROJECT_NAME MyProject)
+
 set(CMAKE_CXX_STANDARD 17)
-
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  URL https://github.com/google/googletest/archive/609281088cfefc76f9d0ce82e1ff6c30cc3591e5.zip
-)
-FetchContent_MakeAvailable(googletest)
-
+set(CMAKE_CXX_FLAGS, "-g Wall")
 enable_testing()
 
 add_subdirectory(src)
