@@ -5,6 +5,7 @@
 #include <unordered_set>
 #include <gtest/gtest.h>
 #include "../src/two_sum.h"
+#include "../src/utils.h"
 
 using std::vector;
 using std::unordered_set;
