@@ -6,6 +6,7 @@
 #include <gtest/gtest.h>
 #include "../src/two_sum.h"
 #include "../src/utils.h"
+#include "../src/fib.h"
 
 using std::vector;
 using std::unordered_set;
@@ -19,7 +20,7 @@ using utils::printVector;
 // Catch.hpp: https://github.com/catchorg/Catch2/releases
 
 
-TEST(HelloTest, BasicAssertions) {
+TEST(Sanity, BasicAssertions) {
   // Expect two strings not to be equal.
   EXPECT_STRNE("hello", "world");
   // Expect equality.
@@ -33,4 +34,12 @@ TEST(TwoSum, basic) {
 
     ASSERT_EQ(utils::getSetFromVector(expected_result),
               utils::getSetFromVector(actual_result));
+}
+
+TEST(Fibonnaci, basic) {
+    // 1,1,2,3,5,8
+    int expected_result = 8;
+    int actual_result = Fib().fib(6);
+
+    ASSERT_EQ(expected_result, actual_result);
 }

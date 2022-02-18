@@ -8,7 +8,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 
-add_executable(mytest test_two_sum.cc)
+add_executable(mytest test_algorithms.cc)
 target_link_libraries(mytest gtest gtest_main)
 include(GoogleTest)
 gtest_discover_tests(mytest)
