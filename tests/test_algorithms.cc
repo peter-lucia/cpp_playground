@@ -7,10 +7,12 @@
 #include "../src/two_sum.h"
 #include "../src/utils.h"
 #include "../src/fib.h"
+#include "../src/remove_k_digits.h"
 
 using std::vector;
 using std::unordered_set;
 using std::cout;
+using std::string;
 using utils::printVector;
 
 // Sources:
@@ -40,6 +42,27 @@ TEST(Fibonnaci, basic) {
     // 1,1,2,3,5,8
     int expected_result = 8;
     int actual_result = Fib().fib(6);
+
+    ASSERT_EQ(expected_result, actual_result);
+}
+
+TEST(RemoveKDigits, basic) {
+    string expected_result = "1219";
+    string actual_result = RemoveKDigits().removeKdigits("1432219", 3);
+
+    ASSERT_EQ(expected_result, actual_result);
+}
+
+TEST(RemoveKDigits, medium) {
+    string expected_result = "200";
+    string actual_result = RemoveKDigits().removeKdigits("10200", 1);
+
+    ASSERT_EQ(expected_result, actual_result);
+}
+
+TEST(RemoveKDigits, hard) {
+    string expected_result = "11";
+    string actual_result = RemoveKDigits().removeKdigits("112", 1);
 
     ASSERT_EQ(expected_result, actual_result);
 }

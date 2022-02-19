@@ -14,6 +14,7 @@ using std::vector;
 using std::unordered_map;
 using std::unordered_set;
 using std::cout;
+using std::string;
 
 
 namespace utils {
@@ -40,6 +41,14 @@ namespace utils {
             result.insert(val);
         }
         return result;
+    }
+
+    void prefix_trim(string &s, char char_to_trim) {
+        s.erase(0, s.find_first_not_of(char_to_trim));
+    }
+
+    void suffix_trim(string &s, char char_to_trim) {
+        s.erase(s.find_last_not_of(char_to_trim)+1);
     }
 
 }
