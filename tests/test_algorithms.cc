@@ -9,6 +9,7 @@
 #include "../src/fib.h"
 #include "../src/remove_k_digits.h"
 #include "../src/majority_element.h"
+#include "../src/algorithms.h"
 
 using std::vector;
 using std::unordered_set;
@@ -75,4 +76,16 @@ TEST(MajorityElement, easy) {
     int actual_result = majorityElement(v);
 
     ASSERT_EQ(expected_result, actual_result);
+}
+
+TEST(MaxDepth, easy) {
+
+    TreeNode* root = new TreeNode(1);
+    root->left = new TreeNode(2);
+    root->right = new TreeNode(3);
+    root->left->left = new TreeNode(4);
+    root->left->left->left = new TreeNode(5);
+    int expected_result = 4;
+
+    ASSERT_EQ(expected_result, maxDepth(root));
 }
