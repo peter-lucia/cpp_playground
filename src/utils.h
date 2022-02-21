@@ -51,6 +51,12 @@ namespace utils {
         s.erase(s.find_last_not_of(char_to_trim)+1);
     }
 
+    void print_unordered_map(const unordered_map<int, int> &lookup) {
+        for (const std::pair<int, int> & p : lookup) {
+            cout << p.first << ", " << p.second << "\n";
+        }
+    }
+
 }
 
 #endif //MYPROJECT_UTILS_H

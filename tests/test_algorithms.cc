@@ -8,6 +8,7 @@
 #include "../src/utils.h"
 #include "../src/fib.h"
 #include "../src/remove_k_digits.h"
+#include "../src/majority_element.h"
 
 using std::vector;
 using std::unordered_set;
@@ -63,6 +64,15 @@ TEST(RemoveKDigits, medium) {
 TEST(RemoveKDigits, hard) {
     string expected_result = "11";
     string actual_result = RemoveKDigits().removeKdigits("112", 1);
+
+    ASSERT_EQ(expected_result, actual_result);
+}
+
+
+TEST(MajorityElement, easy) {
+    int expected_result = 2;
+    vector<int> v = {1,2,2,3,4,5};
+    int actual_result = majorityElement(v);
 
     ASSERT_EQ(expected_result, actual_result);
 }
