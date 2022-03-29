@@ -10,6 +10,7 @@
 #include "../src/remove_k_digits.h"
 #include "../src/majority_element.h"
 #include "../src/algorithms.h"
+#include "../src/find_duplicate.h"
 
 using std::vector;
 using std::unordered_set;
@@ -88,4 +89,14 @@ TEST(MaxDepth, easy) {
     int expected_result = 4;
 
     ASSERT_EQ(expected_result, maxDepth(root));
+}
+
+TEST(FindDuplicate, easy) {
+
+    vector<int> v = {1,2,2,3,4,5};
+
+    int actual_result = FindDuplicate().findDuplicate(v);
+    int expected_result = 2;
+    ASSERT_EQ(expected_result, actual_result);
+
 }
