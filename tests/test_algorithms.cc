@@ -11,10 +11,10 @@
 #include "../src/majority_element.h"
 #include "../src/algorithms.h"
 #include "../src/find_duplicate.h"
+#include "../src/time_formatter.h"
 
 using std::vector;
 using std::unordered_set;
-using std::cout;
 using std::string;
 using utils::printVector;
 
@@ -99,4 +99,11 @@ TEST(FindDuplicate, easy) {
     int expected_result = 2;
     ASSERT_EQ(expected_result, actual_result);
 
+}
+
+TEST(TimeFormatter, easy) {
+    string time_with_tz = "2022-03-30T05:18:14.660921+00:00";
+    string expected_result = "2022-03-29T22:16:54.669560-08:00";
+    string actual_result = TimeFormatter::convert_isoformatted_time(time_with_tz);
+    ASSERT_EQ(expected_result, actual_result);
 }
