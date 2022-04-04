@@ -61,9 +61,9 @@ public:
 
         // format the input
         local_time_input_facet *input_facet = new local_time_input_facet(fmt);
-        const locale loc = locale(locale::classic(), input_facet);
+        const locale input_loc = locale(locale::classic(), input_facet);
         stringstream input_ss(provided_time);
-        input_ss.imbue(loc);
+        input_ss.imbue(input_loc);
 
         // add provided time str to input ss
         boost::posix_time::ptime utc_time;
@@ -77,8 +77,8 @@ public:
         local_time_facet* output_facet = new local_time_facet();
         stringstream output_ss;
 
-        const locale loc = locale(locale::classic(), output_facet);
-        output_ss.imbue(loc);
+        const locale output_loc = locale(locale::classic(), output_facet);
+        output_ss.imbue(output_loc);
         output_facet->format(fmt.c_str());
         output_ss << local_time;
         return output_ss.str();
