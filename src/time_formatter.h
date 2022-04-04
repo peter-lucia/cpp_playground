@@ -64,6 +64,7 @@ public:
         const locale input_loc = locale(locale::classic(), input_facet);
         stringstream input_ss(provided_time);
         input_ss.imbue(input_loc);
+        input_ss.str("");
 
         // add provided time str to input ss
         boost::posix_time::ptime utc_time;
@@ -78,8 +79,9 @@ public:
         stringstream output_ss;
 
         const locale output_loc = locale(locale::classic(), output_facet);
-        output_ss.imbue(output_loc);
         output_facet->format(fmt.c_str());
+        output_ss.imbue(output_loc);
+        output_ss.str("");
         output_ss << local_time;
         return output_ss.str();
     }
