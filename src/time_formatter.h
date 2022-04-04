@@ -11,11 +11,17 @@
 #include "boost/date_time/local_time_adjustor.hpp"
 #include "boost/date_time/c_local_time_adjustor.hpp"
 #include "boost/date_time/local_time/local_time.hpp"
-//#include "boost/date_time/time_facet.hpp"
+#include "boost/date_time/time_facet.hpp"
+#include <locale>
 
+// std
 using std::string;
 using std::stringstream;
 using std::tm;
+using std::locale;
+using std::istringstream;
+
+// boost
 using boost::date_time::not_a_date_time;
 using boost::posix_time::ptime;
 using boost::posix_time::hours;
@@ -23,6 +29,7 @@ using boost::posix_time::no_dst;
 using boost::posix_time::time_from_string;
 using boost::posix_time::from_iso_string;
 using boost::posix_time::us_dst;
+using boost::posix_time::time_input_facet;
 using boost::gregorian::May;
 using boost::gregorian::date;
 using boost::gregorian::to_simple_string;
@@ -41,18 +48,40 @@ public:
      * References
      *      https://www.boost.org/doc/libs/1_78_0/doc/html/date_time.html
      *      https://www.boost.org/doc/libs/1_78_0/doc/html/date_time/examples.html#date_time.examples.local_utc_conversion
+     *      https://en.cppreference.com/w/cpp/chrono/parse
+     *      https://stackoverflow.com/questions/26901009/boost-how-to-parse-following-string-to-date-time
      */
     static string convert_isoformatted_time(const string &provided_time) {
-        boost::date_time::local_adjustor<ptime, -8, us_dst> us_california;
-        ptime utc_time = time_from_string(provided_time);
-        stringstream ss;
-        ss << provided_time;
-        ptime pt(not_a_date_time);
-        string fmt = "%Y-%m-%dT%H:%M:%S%F%Q";
-        ss >> pt;
 
+        // specify desired timezone, hardcoded for now temporarily
+        boost::date_time::local_adjustor<ptime, -8, us_dst> us_california;
+
+        // rfc3339 datetime format definition
+        string fmt = "%Y-%m-%dT%H:%M:%S%F%Q";
+
+        // format the input
+        local_time_input_facet *input_facet = new local_time_input_facet(fmt);
+        const locale loc = locale(locale::classic(), input_facet);
+        stringstream input_ss(provided_time);
+        input_ss.imbue(loc);
+
+        // add provided time str to input ss
+        boost::posix_time::ptime utc_time;
+        input_ss >> utc_time;
+
+        // perform timezone adjustment
         ptime local_time = us_california.utc_to_local(utc_time);
-        return to_simple_string(local_time);
+
+
+        // format the output
+        local_time_facet* output_facet = new local_time_facet();
+        stringstream output_ss;
+
+        const locale loc = locale(locale::classic(), output_facet);
+        output_ss.imbue(loc);
+        output_facet->format(fmt.c_str());
+        output_ss << local_time;
+        return output_ss.str();
     }
 
 };
