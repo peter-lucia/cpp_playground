@@ -57,28 +57,28 @@ public:
         boost::date_time::local_adjustor<ptime, -8, us_dst> us_california;
 
         // rfc3339 datetime format definition
-        string fmt = "%Y-%m-%dT%H:%M:%S%F%Q";
+        const string fmt = "%Y-%m-%dT%H:%M:%s%Q";
 
         // format the input
         local_time_input_facet *input_facet = new local_time_input_facet(fmt);
-        const locale input_loc = locale(locale::classic(), input_facet);
+        const locale input_loc = locale(locale("en_US"), input_facet);
         stringstream input_ss(provided_time);
         input_ss.imbue(input_loc);
         input_ss.str("");
+        input_ss << provided_time;
 
         // add provided time str to input ss
-        boost::posix_time::ptime utc_time;
+        ptime utc_time(not_a_date_time);
         input_ss >> utc_time;
 
         // perform timezone adjustment
         ptime local_time = us_california.utc_to_local(utc_time);
 
-
         // format the output
         local_time_facet* output_facet = new local_time_facet();
         stringstream output_ss;
 
-        const locale output_loc = locale(locale::classic(), output_facet);
+        const locale output_loc = locale(locale("en_US"), output_facet);
         output_facet->format(fmt.c_str());
         output_ss.imbue(output_loc);
         output_ss.str("");
