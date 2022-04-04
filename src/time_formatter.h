@@ -61,6 +61,7 @@ public:
 
         // format the input
         local_time_input_facet *input_facet = new local_time_input_facet(fmt);
+        input_facet->format(fmt.c_str());
         const locale input_loc = locale(locale("en_US"), input_facet);
         stringstream input_ss(provided_time);
         input_ss.imbue(input_loc);
@@ -76,10 +77,10 @@ public:
 
         // format the output
         local_time_facet* output_facet = new local_time_facet();
+        output_facet->format(fmt.c_str());
         stringstream output_ss;
 
         const locale output_loc = locale(locale("en_US"), output_facet);
-        output_facet->format(fmt.c_str());
         output_ss.imbue(output_loc);
         output_ss.str("");
         output_ss << local_time;
