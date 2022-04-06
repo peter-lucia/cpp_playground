@@ -102,8 +102,8 @@ TEST(FindDuplicate, easy) {
 }
 
 TEST(TimeFormatter, easy) {
-    string time_with_tz = "2022-03-30T05:18:14.660921+00:00";
-    string expected_result = "2022-03-29T22:16:54.669560-08:00";
-    string actual_result = TimeFormatter::convert_isoformatted_time(time_with_tz);
+    string time_with_tz = "2022-03-30T05:18:14.660921+0000";
+    string expected_result = "2022-03-29T22:18:14.660921-0700";
+    string actual_result = TimeFormatter::convert_isoformatted_time(time_with_tz, "US/Pacific");
     ASSERT_EQ(expected_result, actual_result);
 }

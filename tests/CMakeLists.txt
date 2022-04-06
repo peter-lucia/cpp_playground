@@ -9,7 +9,7 @@ FetchContent_MakeAvailable(googletest)
 
 
 add_executable(mytest test_algorithms.cc)
-target_link_libraries(mytest gtest gtest_main)
+target_link_libraries(mytest PRIVATE gtest gtest_main date::date-tz)
 include(GoogleTest)
 gtest_discover_tests(mytest)
 
