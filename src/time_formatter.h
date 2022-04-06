@@ -22,7 +22,7 @@ class TimeFormatter {
 
 public:
     /*
-     * Converts an isoformatted, timezone aware datetime string to local time
+     * Converts utc time to a desired timezone
      *
      * Example:
      *      Input: "2022-03-30T05:18:14.660921+0000";
@@ -32,7 +32,7 @@ public:
      *      https://github.com/HowardHinnant/date
      *      https://en.cppreference.com/w/cpp/chrono/parse
      */
-    static string convert_isoformatted_time(const string &utc_time, string desired_timezone = "US/Pacific") {
+    static string utc_to_local_time(const string &utc_time, string desired_timezone = "US/Pacific") {
         istringstream stream{utc_time.c_str()};
         sys_time<microseconds> tp;
         stream >> parse("%FT%T%z", tp);
